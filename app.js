@@ -107,3 +107,21 @@ app.post('/books',(req,res) => {
     })
 
 })
+
+
+//deleting document
+app.delete('/books/:id', (req,res) => {
+   
+    if (ObjectId.isValid(req.params.id)) { //this validates whether the id used is exisiting or not
+        db.collection('books')
+            .deleteOne({ _id: new ObjectId(req.params.id) })
+            .then(result => {
+                res.status(200).json(result)
+            })
+            .catch(err => {
+                res.status(500).json({ error: 'Could not delete document' })
+            })
+    } else {
+        res.status(500).json({error: 'Not a valid ID'})
+    }
+})
