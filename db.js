@@ -31,7 +31,7 @@ module.exports = {
         //     console.error('Error connecting to MongoDB:', err);
         //     return cb(err);
         // });
-        MongoClient.connect('mongodb://localhost:27017/bookstore')
+        MongoClient.connect('mongodb://127.0.0.1:27017/bookstore')
             .then(client => {
                 dbConnection = client.db()
                 return cb()
