@@ -15,23 +15,12 @@
 const { MongoClient } = require('mongodb')
 
 let dbConnection;
+let uri = 'mongodb+srv://althanileonida:110798_Bohol@cluster0.snvqjh4.mongodb.net/?retryWrites=true&w=majority'
 
 module.exports = {
     connectToDb: (cb) => {
-        // const uri =  'mongodb://localhost:27017/bookstore';
-
-        // const client = new MongoClient(uri);
-
-        // client.connect()
-        // .then(() => {
-        //     dbConnection = client.db();
-        //     return cb();
-        // })
-        // .catch((err) => {
-        //     console.error('Error connecting to MongoDB:', err);
-        //     return cb(err);
-        // });
-        MongoClient.connect('mongodb://127.0.0.1:27017/bookstore')
+    
+        MongoClient.connect(uri)
             .then(client => {
                 dbConnection = client.db()
                 return cb()
